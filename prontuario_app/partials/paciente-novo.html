@@ -5,8 +5,8 @@
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<button type="button" ng-click="salvar()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Salvar</button>
-			<a class="btn btn-warning" href="#/cliente-lista" role="button"><span class="glyphicon glyphicon-menu-left"></span> Cancelar</a>
+			<button type="button" href="#modal-container-edit" ng-click="salvar()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+			<a class="btn btn-warning" href="#/paciente-lista" role="button"><span class="glyphicon glyphicon-menu-left"></span> Cancelar</a>
 			<hr>		
 		</div>
 	</div>
@@ -19,13 +19,13 @@
 					<label for="nome">
 						Nome
 					</label>
-					<input type="text" ng-model="cliente.nome" class="form-control" id="nome" />
+					<input type="text" ng-model="paciente.nome" class="form-control" id="nome" />
 				</div>
 				<div class="form-group">					 
 					<label for="email">
 						Email
 					</label>
-					<input type="email" ng-model="cliente.email" class="form-control" id="email" />
+					<input type="email" ng-model="paciente.email" class="form-control" id="email" />
 				</div>
 			</form>
 
