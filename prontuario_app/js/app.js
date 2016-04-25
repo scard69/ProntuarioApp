@@ -1,4 +1,4 @@
-angular.module('AppModule', ['ngRoute', 'PacienteModule', 'MedicacoesModule'])
+angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacaoModule'])
 
 .controller('AppController', ['$scope', '$location', function($scope, $location) {
 
@@ -126,11 +126,11 @@ angular.module('AppModule', ['ngRoute', 'PacienteModule', 'MedicacoesModule'])
         // Medicação
         when('/historico-medicacoes', {
             templateUrl:'partials/historico-medicacoes.html',
-            controller: 'MedicacoesController'
+            controller: 'MedicacaoController'
         }).
         when('/nova-medicacao',{
             templateUrl: 'partials/nova-medicacao.html',
-            controller: 'MedicacoesController'
+            controller: 'MedicacaoController'
         }).
     	// PADRÃO
         when('/', {

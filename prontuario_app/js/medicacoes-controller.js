@@ -1,5 +1,5 @@
-angular.module('MedicacoesModule', ['AppModule']).
-        controller('MedicacoesController', ['$scope', function ($scope) {
+angular.module('MedicacaoModule', ['AppModule']).
+        controller('MedicacaoController', ['$scope', function ($scope) {
 
                 $scope.medicacao = {};
                 $scope.listaMedicacoes = true;
