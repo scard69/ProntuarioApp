@@ -1,5 +1,6 @@
+
 <div class="row">
-	<div class="row" ng-show="editarRegistro">
+	<div class="row" ng-show="visualizar">
             <div class="form-group">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <form role="form">
@@ -130,54 +131,3 @@
                 </div>
             </div>
         </div>
-
-	<div class="row" ng-hide="editarRegistro">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h3>Listagem de Paciente</h3>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<form>
-				<div class="form-inline">
-					<input type="text" class="form-control" ng-model="pesquisa" />
-					<a class="btn btn-default" href="#/paciente-novo" role="button"><span class="glyphicon glyphicon-pencil"></span> Novo...</a>
-				</div>
-			</form>		
-			<hr>		
-		</div>
-	</div>                    			
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>Nome</th>
-                                        <th>Sexo</th>
-					<th>Nascimento</th>
-					<th>Contato</th>
-                                        <th>Ações</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="(key, value) in listaPaciente | filter:pesquisa">
-					<td>{{value.nome}}</td>
-                                        <td>{{value.sexo}}</td>
-                                        <td>{{value.dataNascimento}}</td>
-                                        <td>{{value.contato}}</td>
-					<th>
-                                                <button type="button" ng-click="visualizar(value)" class="btn btn-sm btn-success" href="#/paciente-visualizacao" alt="Visualizar" title="Visualizar">
-                                                        <span class="glyphicon glyphicon-zoom-in"></span>
-                                                </button>
-						<button type="button" ng-click="excluir(value.id)" class="btn btn-sm btn-danger" alt="Excluir" title="Excluir">
-							<span class="glyphicon glyphicon-remove"></span>
-						</button>
-						<button type="button" ng-click="editar(value)" class="btn btn-sm btn-info" alt="Editar" title="Editar">
-							<span class="glyphicon glyphicon-edit"></span>
-						</button>
-					</th>
-				</tr>
-			</tbody>
-		</table>
-
-		</div>
-	</div>
-</div>

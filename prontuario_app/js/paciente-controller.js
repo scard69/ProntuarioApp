@@ -13,15 +13,6 @@ controller('PacienteController', ['$scope', function($scope){
 		$scope.paciente = angular.copy(obj);
 	};
         
-        $scope.visualizar = function (obj) {
-            var app = angular.module("PacienteModule", []);
-            app.directive("minha-modal", function() {
-                return {
-                    template :"<label>teste</label>"
-                };
-            });
-        };
-
 	$scope.excluir = function (key) {
 		for (var i = 0; i < $scope.listaPaciente.length; i++) {
 			if($scope.listaPaciente[i].id==key) {
@@ -32,6 +23,10 @@ controller('PacienteController', ['$scope', function($scope){
 	};
 
 	$scope.salvarEdicao = function () {
+//                    if (!angular.isDate($scope.paciente.dataNascimento) == true) {
+//                        alert('Data Nascimento Inválida!');
+//                        return;
+//                    }
 		if(!$scope.paciente.nome || !$scope.paciente.email) {
 			alert('Campos obrigatórios não foram preenchidos!');
 			return;
@@ -58,5 +53,8 @@ controller('PacienteController', ['$scope', function($scope){
 		$scope.listaPaciente.push($scope.paciente);
 		$scope.redir('/paciente-lista');
 	};
-
+        
+        $scope.visualizar = function(key){
+                $scope.paciente = angular.copy(obj);
+        };
 }]);
