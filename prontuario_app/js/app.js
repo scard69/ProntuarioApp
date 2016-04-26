@@ -135,19 +135,15 @@ angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
             templateUrl: 'partials/paciente-lista.html',
             controller: 'PacienteController' 
         }).
+                
         // Medicação
         when('/historico-medicacoes', {
             templateUrl:'partials/historico-medicacoes.html',
             controller: 'MedicacoesController'
         }).
-        // Medicação
-        when('/historico-medicacoes', {
-            templateUrl:'partials/historico-medicacoes.html',
-            controller: 'MedicacaoController'
-        }).
         when('/nova-medicacao',{
             templateUrl: 'partials/nova-medicacao.html',
-            controller: 'MedicacaoController'
+            controller: 'MedicacoesController'
 
         }).
     	// PADRÃO
