@@ -141,11 +141,13 @@ angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
             templateUrl:'partials/historico-medicacoes.html',
             controller: 'MedicacoesController'
         }).
+
         when('/nova-medicacao',{
             templateUrl: 'partials/nova-medicacao.html',
             controller: 'MedicacoesController'
 
         }).
+
     	// PADRÃO
         when('/', {
             templateUrl: 'partials/saudacao.html',

@@ -19,8 +19,8 @@
                         <th>Observações</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr ng-repeat="(key, value) in listaMedicacao">
+                <tbody ng-controller="MedicacoesController">
+                    <tr ng-repeat="(key, value) in listaMedicacao | filter:pesquisa">
                         <td>{{value.data}}</td>
                         <td>{{value.nomeComercial}}</td>
                         <td>{{value.principioAtivo}}</td>
@@ -36,7 +36,7 @@
                     </tr>
                 </tbody>
             </table>
-            <a class="btn btn-default" href="#/nova-medicacao" role="button"><span class="glyphicon glyphicon-pencil"></span>Adicionar Medicação</a>
+            <a class="btn btn-default" href="#/nova-medicacao" role="button">Adicionar Medicação</a>
         </div>
     </div>
 </div>
