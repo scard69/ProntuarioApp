@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3>Nova Medicação</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" ng-click="salvar()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+            <a class="btn btn-warning" href="#/historico-medicacoes" role="button"><span class="glyphicon glyphicon-menu-left"></span> Cancelar</a>
+            <hr>		
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form role="form">
+                <div class="form-group">					 
+                    <label for="data">
+                        Data
+                    </label>
+                    <input type="text" ng-model="medicacao.data" class="form-control" id="data" />
+                </div>
+                <div class="form-group">					 
+                    <label for="nomecomercial">
+                        Nome Comercial
+                    </label>
+                    <input type="text" ng-model="medicacao.nomeComercial" class="form-control" id="nomecomercial" />
+                </div>
+                <div class="form-group">					 
+                    <label for="principioAtivo">
+                        Principio Ativo
+                    </label>
+                    <input type="text" ng-model="medicacao.principioAtivo" class="form-control" id="principioAtivo" />
+                </div>
+                <div class="form-group">					 
+                    <label for="indicacoes">
+                        Indicações
+                    </label>
+                    <input type="text" ng-model="medicacao.indicacoes" class="form-control" id="indicacoes" />
+                </div>
+                <div class="form-group">					 
+                    <label for="dose">
+                        Dose
+                    </label>
+                    <input type="text" ng-model="medicacao.dose" class="form-control" id="dose" />
+                </div>
+                <div class="form-group">					 
+                    <label for="frequencia">
+                        Frequencia
+                    </label>
+                    <input type="text" ng-model="medicacao.frequencia" class="form-control" id="frequencia" />
+                </div>
+                <div class="form-group">					 
+                    <label for="observacoes">
+                        Observações
+                    </label>
+                    <input type="text" ng-model="medicacao.observacoes" class="form-control" id="observacoes" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
