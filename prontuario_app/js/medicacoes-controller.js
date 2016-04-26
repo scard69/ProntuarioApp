@@ -12,7 +12,7 @@ angular.module('MedicacoesModule', ['AppModule']).
                 };
 
                 $scope.salvar = function () {
-                    if (!$scope.medicacao.nomeComercial || !$scope.medicacao.principioAtivo || !$scope.medicacao.dose  || !$scope.medicacao.frequencia) {
+                    if (!$scope.medicacao.nomeComercial || !$scope.medicacao.dose || !$scope.medicacao.frequencia || !$scope.medicacao.principioAtivo) {
                         alert('Campos obrigatórios não foram preenchidos!');
                         return;
                     }
@@ -22,8 +22,3 @@ angular.module('MedicacoesModule', ['AppModule']).
                     $scope.redir('/historico-medicacoes');
                 };
 }]);
-
-
-
-
-
