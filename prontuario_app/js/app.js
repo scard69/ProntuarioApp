@@ -1,4 +1,4 @@
-angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacaoModule'])
+angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
 
 .controller('AppController', ['$scope', '$location', function($scope, $location) {
 

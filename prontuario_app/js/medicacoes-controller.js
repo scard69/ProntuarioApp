@@ -1,8 +1,7 @@
-angular.module('MedicacaoModule', ['AppModule']).
-        controller('MedicacaoController', ['$scope', function ($scope) {
+angular.module('MedicacoesModule', ['AppModule']).
+        controller('MedicacoesController', ['$scope', function ($scope) {
 
                 $scope.medicacao = {};
-                $scope.listaMedicacoes = true;
 
                 $scope.excluir = function (key) {
                     for (var i = 0; i < $scope.listaMedicacao.length; i++) {
