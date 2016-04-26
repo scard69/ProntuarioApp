@@ -1,23 +1,17 @@
-<<<<<<< HEAD
 <div class="row">
-=======
 <div class="row" ng-show="listaMedicacoes">
->>>>>>> 75c239d93af71a836fb12c9148e5132850a7baf8
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <h3 class="titulo">HISTÓRICO DE MEDICAÇÕES</h3> 
         <button type="button" ng-click="" class="btn btn-md btn-default">Selecionar Paciente</button> 
         Nome: Felipe Dal Carobo
-<<<<<<< HEAD
         <hr>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><br/>
-=======
     </div>
     
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
->>>>>>> 75c239d93af71a836fb12c9148e5132850a7baf8
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -30,13 +24,10 @@
                         <th>Observações</th>
                     </tr>
                 </thead>
-<<<<<<< HEAD
                 <tbody ng-controller="MedicacoesController">
                     <tr ng-repeat="(key, value) in listaMedicacao | filter:pesquisa">
-=======
                 <tbody>
                     <tr ng-repeat="(key, value) in listaMedicacao">
->>>>>>> 75c239d93af71a836fb12c9148e5132850a7baf8
                         <td>{{value.data}}</td>
                         <td>{{value.nomeComercial}}</td>
                         <td>{{value.principioAtivo}}</td>
@@ -52,11 +43,8 @@
                     </tr>
                 </tbody>
             </table>
-<<<<<<< HEAD
             <a class="btn btn-default" href="#/nova-medicacao" role="button">Adicionar Medicação</a>
-=======
             <a class="btn btn-default" href="#/nova-medicacao" role="button"><span class="glyphicon glyphicon-pencil"></span>Adicionar Medicação</a>
->>>>>>> 75c239d93af71a836fb12c9148e5132850a7baf8
         </div>
     </div>
 </div>
