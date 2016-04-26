@@ -22,8 +22,3 @@ angular.module('MedicacoesModule', ['AppModule']).
                     $scope.redir('/historico-medicacoes');
                 };
 }]);
-
-
-
-
-

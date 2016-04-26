@@ -119,9 +119,26 @@ angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
             templateUrl: 'partials/paciente-novo.html',
             controller: 'PacienteController'
         }).
+
+        // Nova Medicacao
+        when('/nova-medicacao',{
+            templateUrl: 'partials/nova-medicacao.html',
+            controller: 'MedicacoesController'
+        }).
+
         when('/paciente-lista', {
             templateUrl: 'partials/paciente-lista.html',
             controller: 'PacienteController'
+        }).
+
+        when('panel2',{
+            templateUrl: 'partials/paciente-lista.html',
+            controller: 'PacienteController' 
+        }).
+        // Medicação
+        when('/historico-medicacoes', {
+            templateUrl:'partials/historico-medicacoes.html',
+            controller: 'MedicacoesController'
         }).
         // Medicação
         when('/historico-medicacoes', {
@@ -131,6 +148,7 @@ angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
         when('/nova-medicacao',{
             templateUrl: 'partials/nova-medicacao.html',
             controller: 'MedicacaoController'
+
         }).
     	// PADRÃO
         when('/', {
@@ -144,6 +162,4 @@ angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
         otherwise({
             redirectTo: '/404'
         });
-}])
-
-; 
+}]); 

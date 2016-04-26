@@ -1,136 +1,135 @@
 <div class="row">
-	<div class="row" ng-show="editarRegistro">
-            <div class="form-group">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <form role="form">
-                        <h4>Edição de Paciente</h4>
-                        <div class="tabbable" id="tab-paciente">
-				<ul class="nav nav-tabs">
-					<li class="active">
-						<a href="panel1" data-toggle="tab">Paciente</a>
-					</li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="panel1">
-                                            
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Nome</label>
-                                                    <input id="nome" ng-model="paciente.nome" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                    <label>Data Nascimento</label>
-                                                    <input id="dataNascimento" ng-model="paciente.dataNascimento" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div> 
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                          <label for="sel1">Sexo:</label>
-                                                            <select class="form-control" id="sexo" ng-model="paciente.sexo">
-                                                              <option>M</option>
-                                                              <option>F</option>
-                                                            </select>
-                                                <!--<label>Sexo</label>-->
-                                                    <!--<input id="sexo" ng-model="paciente.sexo" type="text"  class="form-control input-md" >-->
-                                                </div>
-                                            </div> 
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Profissão</label>
-                                                    <input id="profissao" ng-model="paciente.profissao" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>                                            
-                                            <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Ocupação</label>
-                                                <input id="ocupacao" ng-model="paciente.ocupacao" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div> 
-                                            <div class="form-group">
-                                                <div class="col-md-4">
-                                                    <label>Contato</label>
-                                                    <input id="contato" ng-model="paciente.contato" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>  
-                                            <div class="form-group">
-                                                <div class="col-md-4">
-                                                    <label>E-mail</label>
-                                                    <input id="email" ng-model="paciente.email" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>                                            
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <h3>Endereço:</h3>  
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                </div>
-                                            </div>                                                                                    
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Logadouro</label>
-                                                    <input id="logadouro" ng-model="paciente.endereco.logadouro" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Numero</label>
-                                                    <input id="numero" ng-model="paciente.endereco.numero" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Bairro</label>
-                                                    <input id="bairro" ng-model="paciente.endereco.bairro" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>  
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Cidade</label>
-                                                    <input id="cidade" ng-model="paciente.endereco.cidade" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>                                            
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>CEP</label>
-                                                    <input id="cep" ng-model="paciente.endereco.cep" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>
-                                             <div class="form-group">                           
-                                                <div class="col-md-4">
-                                                <label>Estado</label>
-                                                    <input id="nome" ng-model="paciente.endereco.estado" type="text"  class="form-control input-md" >
-                                                </div>
-                                            </div>                                            
-					</div>
-				</div>
-			</div>   
-                            <div class="form-group">
-                                <div class="col-md-12">
+    <div class="row" ng-show="editarRegistro">
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form role="form">
+                    <h4>Edição de Paciente</h4>
+                    <div class="tabbable" id="tab-paciente">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="panel1" data-toggle="tab">Paciente</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="panel1">
+
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Nome</label>
+                                        <input id="nome" ng-model="paciente.nome" type="text"  class="form-control input-md" >
+                                    </div>
                                 </div>
-                            </div>                        
-                            <div class="form-group">
-                                <div class="col-md-12"><p/></div>
-                                <div class="col-md-12"><p/></div>
-                                <div class="col-md-12">
-                                    <button type="button" ng-click="cancelarEdicao()" class="btn btn-warning"><span class="glyphicon glyphicon-menu-left"></span> Cancelar</button>
-                                    <button type="button" ng-click="salvarEdicao()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Salvar Edição</button>                              
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Data Nascimento</label>
+                                        <input id="dataNascimento" ng-model="paciente.dataNascimento" type="text"  class="form-control input-md" >
+                                    </div>
                                 </div> 
-                                <div class="col-md-12"><p/></div>
-                                <div class="col-md-12"><p/></div>
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label for="sel1">Sexo:</label>
+                                        <select class="form-control" id="sexo" ng-model="paciente.sexo">
+                                            <option>M</option>
+                                            <option>F</option>
+                                        </select>
+                                        <!--<label>Sexo</label>-->
+                                        <!--<input id="sexo" ng-model="paciente.sexo" type="text"  class="form-control input-md" >-->
+                                    </div>
+                                </div> 
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Profissão</label>
+                                        <input id="profissao" ng-model="paciente.profissao" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>                                            
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Ocupação</label>
+                                        <input id="ocupacao" ng-model="paciente.ocupacao" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label>Contato</label>
+                                        <input id="contato" ng-model="paciente.contato" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>  
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label>E-mail</label>
+                                        <input id="email" ng-model="paciente.email" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>                                            
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <h3>Endereço:</h3>  
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                    </div>
+                                </div>                                                                                    
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Logadouro</label>
+                                        <input id="logadouro" ng-model="paciente.endereco.logadouro" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Numero</label>
+                                        <input id="numero" ng-model="paciente.endereco.numero" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Bairro</label>
+                                        <input id="bairro" ng-model="paciente.endereco.bairro" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>  
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Cidade</label>
+                                        <input id="cidade" ng-model="paciente.endereco.cidade" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>                                            
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>CEP</label>
+                                        <input id="cep" ng-model="paciente.endereco.cep" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>
+                                <div class="form-group">                           
+                                    <div class="col-md-4">
+                                        <label>Estado</label>
+                                        <input id="nome" ng-model="paciente.endereco.estado" type="text"  class="form-control input-md" >
+                                    </div>
+                                </div>                                            
                             </div>
-                    </form>
-                </div>
+                        </div>
+                    </div>   
+                    <div class="form-group">
+                        <div class="col-md-12">
+                        </div>
+                    </div>                        
+                    <div class="form-group">
+                        <div class="col-md-12"><p/></div>
+                        <div class="col-md-12"><p/></div>
+                        <div class="col-md-12">
+                            <button type="button" ng-click="cancelarEdicao()" class="btn btn-warning"><span class="glyphicon glyphicon-menu-left"></span> Cancelar</button>
+                            <button type="button" ng-click="salvarEdicao()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Salvar Edição</button>                              
+                        </div> 
+                        <div class="col-md-12"><p/></div>
+                        <div class="col-md-12"><p/></div>
+                    </div>
+                </form>
             </div>
         </div>
-
+    </div>
 	<div class="row" ng-hide="editarRegistro">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -177,7 +176,6 @@
 				</tr>
 			</tbody>
 		</table>
-
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
