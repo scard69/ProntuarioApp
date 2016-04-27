@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row" ng-controller="MedicacoesController">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <h3 class="titulo">HISTÓRICO DE MEDICAÇÕES</h3> 
         <h4><small>Selecione o Paciente:</small></h4>
-        <select class="selectpicker btn-block" data-style="btn-primary" ng-options="item as item.nome for item in listaPaciente track by item.id" ng-model="pacienteSelecionado"></select>
+        <select class="selectpicker btn-block" data-style="btn-primary" ng-options="item as item.nome for item in listaPaciente track by item.id" ng-model="paciente" ng-change="selecionaPaciente()"></select>
         <!--<button type="button" ng-click="" class="btn btn-md btn-default">Selecionar Paciente</button>-->
         <hr>
     </div>
@@ -20,7 +20,7 @@
                         <th>Observações</th>
                     </tr>
                 </thead>
-                <tbody ng-controller="MedicacoesController">
+                <tbody>
                     <tr ng-repeat="(key, value) in listaMedicacao | filter:pesquisa">
                         <td>{{value.data}}</td>
                         <td>{{value.nomeComercial}}</td>
