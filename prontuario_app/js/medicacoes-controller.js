@@ -21,4 +21,19 @@ angular.module('MedicacoesModule', ['AppModule']).
                     $scope.listaMedicacao.push($scope.medicacao);
                     $scope.redir('/historico-medicacoes');
                 };
+            
+                $scope.pesquisa = function(medicacao) {
+                    if ($scope.pacienteSelecionado !== null) {
+                        if (medicacao.pacienteId !== $scope.pacienteSelecionado.id) {
+                            return false;
+                        }
+                    }
+                    return true;
+                };
+                
+//                $scope.novo = function(key){
+//                    if($scope.$scope.listaMedicacao.pacienteId !== null){
+//                        $scope.redir('/nova-medicacao');
+//                    };
+//                };
 }]);

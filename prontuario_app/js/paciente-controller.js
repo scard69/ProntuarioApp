@@ -22,10 +22,6 @@ angular.module('PacienteModule', ['AppModule']).
                 };
 
                 $scope.salvarEdicao = function () {
-//                    if (!angular.isDate($scope.paciente.dataNascimento) == true) {
-//                        alert('Data Nascimento Inválida!');
-//                        return;
-//                    }
                     if (!$scope.paciente.nome || !$scope.paciente.email) {
                         alert('Campos obrigatórios não foram preenchidos!');
                         return;
@@ -53,7 +49,7 @@ angular.module('PacienteModule', ['AppModule']).
                     $scope.redir('/paciente-lista');
                 };
 
-                $scope.visualizar = function (key) {
+                $scope.visualizar = function (obj) {
                     $scope.paciente = angular.copy(obj);
                 };
 }]);
