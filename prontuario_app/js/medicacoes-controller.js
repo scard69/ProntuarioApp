@@ -29,11 +29,11 @@ angular.module('MedicacoesModule', ['AppModule']).
                 
                 $scope.pesquisa = function(medicacao) {
                     if ($scope.paciente !== null) {
-                        if (medicacao.pacienteId !== $scope.paciente.id) {
-                            return false;
+                        if (medicacao.pacienteId == $scope.paciente.id) {
+                            return true;
                         }
                     }
-                    return true;
+                    return false;
                 };
                 
                 $scope.selecionaPaciente = function() {
