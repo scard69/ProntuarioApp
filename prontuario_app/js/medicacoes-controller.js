@@ -1,8 +1,13 @@
 angular.module('MedicacoesModule', ['AppModule']).
-        controller('MedicacoesController', ['$scope', function ($scope) {
-
+        controller('MedicacoesController', ['$scope', '$rootScope', function ($scope, $rootScope) {
                 $scope.medicacao = {};
-
+                $scope.paciente = null;
+                
+                if ($rootScope.pacienteSelecionado !== null) {
+                    $scope.paciente = $rootScope.pacienteSelecionado;
+                    $scope.medicacao.pacienteId = $scope.paciente.id;
+                }
+                
                 $scope.excluir = function (key) {
                     for (var i = 0; i < $scope.listaMedicacao.length; i++) {
                         if ($scope.listaMedicacao[i].id === key) {
@@ -21,19 +26,17 @@ angular.module('MedicacoesModule', ['AppModule']).
                     $scope.listaMedicacao.push($scope.medicacao);
                     $scope.redir('/historico-medicacoes');
                 };
-            
+                
                 $scope.pesquisa = function(medicacao) {
-                    if ($scope.pacienteSelecionado !== null) {
-                        if (medicacao.pacienteId !== $scope.pacienteSelecionado.id) {
+                    if ($scope.paciente !== null) {
+                        if (medicacao.pacienteId !== $scope.paciente.id) {
                             return false;
                         }
                     }
                     return true;
                 };
                 
-//                $scope.novo = function(key){
-//                    if($scope.$scope.listaMedicacao.pacienteId !== null){
-//                        $scope.redir('/nova-medicacao');
-//                    };
-//                };
+                $scope.selecionaPaciente = function() {
+                    $rootScope.pacienteSelecionado = $scope.paciente;
+                };
 }]);
