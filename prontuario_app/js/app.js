@@ -1,7 +1,8 @@
 angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
 
-.controller('AppController', ['$scope', '$location', function($scope, $location) {
-
+.controller('AppController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
+    $rootScope.pacienteSelecionado = null;
+    
     // listagem no escopo maior da aplicação;
     // disponível a todos os controllers
     $scope.listaPaciente = [
@@ -140,12 +141,6 @@ angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
         when('/historico-medicacoes', {
             templateUrl:'partials/historico-medicacoes.html',
             controller: 'MedicacoesController'
-        }).
-
-        when('/nova-medicacao',{
-            templateUrl: 'partials/nova-medicacao.html',
-            controller: 'MedicacoesController'
-
         }).
 
     	// PADRÃO
