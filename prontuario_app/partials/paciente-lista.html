@@ -163,7 +163,7 @@
                                         <td>{{value.dataNascimento}}</td>
                                         <td>{{value.contato}}</td>
 					<th>
-                                                <button type="button" ng-click="visualizar(value)" class="btn btn-sm btn-success" href="#/paciente-visualizacao" alt="Visualizar" title="Visualizar">
+                                                <button type="button" ng-click="toggleModal(value)" class="btn btn-sm btn-success" href="#/paciente-visualizacao" alt="Visualizar" title="Visualizar">
                                                         <span class="glyphicon glyphicon-zoom-in"></span>
                                                 </button>
 						<button type="button" ng-click="excluir(value.id)" class="btn btn-sm btn-danger" alt="Excluir" title="Excluir">
@@ -178,4 +178,27 @@
 		</table>
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <modal-dialog show='modalShown' width='700px' height='80%'>
+            <h1>Informações do receptor desta doação</h1>
+
+            <p>Id: {{ debug.id }}</p>
+            <p>Nome: {{ debug.nome }}</p>
+            <p>Endereço:</p>
+            <p>{{ debug.endereco.logadouro }}</p>
+            <p>{{ debug.endereco.numero }}</p>
+            <p>{{ debug.endereco.bairro }}</p>
+            <p>{{ debug.endereco.cidade }}</p>
+            <p>{{ debug.endereco.cep }}</p>
+            <p>{{ debug.endereco.estado }}</p>
+
+            <li style="list-style: none;">Itens:
+                <ul ng-repeat="(key, value) in debug.item">
+                   {{ value.nome }}
+                </ul> 
+            </li>
+            <button style="margin-left: 500px;" type="button" ng-click="doar(debug.id)" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>Confirmar Doação</button>
+        </modal-dialog>
+    </div>
+
 </div>

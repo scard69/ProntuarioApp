@@ -6,6 +6,12 @@ angular.module('PacienteModule', ['AppModule']).
                 $scope.pesquisa = '';
                 $scope.editarRegistro = false;
                 $scope.visualizarRegistro = false;
+                $scope.modalShown = false;
+                
+                $scope.toggleModal = function(o) {
+                     $scope.modalShown = !$scope.modalShown;
+                     $scope.debug = o;
+                };
 
                 $scope.editar = function (obj) {
                     $scope.editarRegistro = true;
@@ -17,8 +23,8 @@ angular.module('PacienteModule', ['AppModule']).
                         if ($scope.listaPaciente[i].id == key) {
                             $scope.listaPaciente.splice(i, 1);
                             $scope.pesquisa = '';
-                        }
-                    }
+                        };
+                    };
                 };
 
                 $scope.salvarEdicao = function () {
