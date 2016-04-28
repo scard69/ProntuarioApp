@@ -5,12 +5,10 @@ angular.module('PacienteModule', ['AppModule']).
                 $scope.paciente = {};
                 $scope.pesquisa = '';
                 $scope.editarRegistro = false;
-                $scope.visualizarRegistro = false;
-                $scope.modalShown = false;
                 
-                $scope.toggleModal = function(o) {
-                     $scope.modalShown = !$scope.modalShown;
-                     $scope.debug = o;
+                $scope.visualizar = function(paciente) {
+                     $scope.selecionado = paciente;
+                     console.log(paciente);
                 };
 
                 $scope.editar = function (obj) {
@@ -53,9 +51,5 @@ angular.module('PacienteModule', ['AppModule']).
                     $scope.paciente.id = $scope.getFakeID();
                     $scope.listaPaciente.push($scope.paciente);
                     $scope.redir('/paciente-lista');
-                };
-
-                $scope.visualizar = function (obj) {
-                    $scope.paciente = angular.copy(obj);
                 };
 }]);

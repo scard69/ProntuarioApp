@@ -32,8 +32,6 @@
                                             <option>M</option>
                                             <option>F</option>
                                         </select>
-                                        <!--<label>Sexo</label>-->
-                                        <!--<input id="sexo" ng-model="paciente.sexo" type="text"  class="form-control input-md" >-->
                                     </div>
                                 </div> 
                                 <div class="form-group">                           
@@ -150,10 +148,10 @@
 			<thead>
 				<tr>
 					<th>Nome</th>
-                                        <th>Sexo</th>
+					<th>Sexo</th>
 					<th>Nascimento</th>
 					<th>Contato</th>
-                                        <th>Ações</th>
+					<th>Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -162,8 +160,8 @@
                                         <td>{{value.sexo}}</td>
                                         <td>{{value.dataNascimento}}</td>
                                         <td>{{value.contato}}</td>
-					<th>
-                                                <button type="button" ng-click="toggleModal(value)" class="btn btn-sm btn-success" href="#/paciente-visualizacao" alt="Visualizar" title="Visualizar">
+					<th>                              
+                                                <button type="button" ng-click="visualizar(value)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">
                                                         <span class="glyphicon glyphicon-zoom-in"></span>
                                                 </button>
 						<button type="button" ng-click="excluir(value.id)" class="btn btn-sm btn-danger" alt="Excluir" title="Excluir">
@@ -176,29 +174,78 @@
 				</tr>
 			</tbody>
 		</table>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">                         
+                          <h2 class="modal-title">Paciente: {{selecionado.nome}}</h2>
+                        </div>
+                            <div class="form-group">                           
+                                    <div class="col-md-12">
+                                        <label><h3>Informações Pessoais: </h3></label>
+                                    </div>
+                                <div class="col-md-12"><p/></div>
+                            </div>
+                            <div class="form-group">                           
+                                    <div class="col-md-6">
+                                        <label>Data Nascimento: {{selecionado.dataNascimento}}</label>
+                                    </div>
+                                    <div class="col-md-6">                                        
+                                        <label>E-mail: {{selecionado.email}}</label>
+                                    </div>
+                            </div>
+                            <div class="form-group">                           
+                                    <div class="col-md-6">
+                                        <label>sexo: {{selecionado.sexo}}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Profissão {{selecionado.profissao}}</label>
+                                    </div>
+                            </div> 
+                            <div class="form-group">                           
+                                    <div class="col-md-6">
+                                        <label>Ocupação: {{selecionado.ocupacao}}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Contato: {{selecionado.contato}}</label>
+                                    </div>
+                            </div>  
+                            <div class="form-group">                           
+                                    <div class="col-md-12">
+                                        <label><h3>Endereço:</h3></label>
+                                    </div>
+                                <div class="col-md-12"><p/></div>
+                            </div>
+                            <div class="form-group">                           
+                                    <div class="col-md-6">
+                                        <label>Logadouro: {{selecionado.endereco.logadouro}}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Numero: {{selecionado.endereco.numero}}</label>
+                                    </div>
+                            </div> 
+                            <div class="form-group">                           
+                                    <div class="col-md-6">
+                                        <label>Bairro: {{selecionado.endereco.bairro}}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Cidade: {{selecionado.endereco.cidade}}</label>
+                                    </div>
+                            </div> 
+                            <div class="form-group">                           
+                                    <div class="col-md-6">
+                                        <label>CEP: {{selecionado.endereco.cep}}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Estado: {{selecionado.endereco.estado}}</label>
+                                    </div>
+                            </div> 
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <modal-dialog show='modalShown' width='700px' height='80%'>
-            <h1>Informações do receptor desta doação</h1>
-
-            <p>Id: {{ debug.id }}</p>
-            <p>Nome: {{ debug.nome }}</p>
-            <p>Endereço:</p>
-            <p>{{ debug.endereco.logadouro }}</p>
-            <p>{{ debug.endereco.numero }}</p>
-            <p>{{ debug.endereco.bairro }}</p>
-            <p>{{ debug.endereco.cidade }}</p>
-            <p>{{ debug.endereco.cep }}</p>
-            <p>{{ debug.endereco.estado }}</p>
-
-            <li style="list-style: none;">Itens:
-                <ul ng-repeat="(key, value) in debug.item">
-                   {{ value.nome }}
-                </ul> 
-            </li>
-            <button style="margin-left: 500px;" type="button" ng-click="doar(debug.id)" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>Confirmar Doação</button>
-        </modal-dialog>
-    </div>
-
 </div>
