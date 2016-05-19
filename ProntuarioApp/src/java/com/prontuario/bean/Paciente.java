@@ -162,7 +162,9 @@ public class Paciente {
     public void setEstado(char estado) {
         this.estado = estado;
     }
-
+/** 
+ ensina para o java o que são dois objetos iguais
+ **/
     @Override
     public int hashCode() {
         int hash = 5;

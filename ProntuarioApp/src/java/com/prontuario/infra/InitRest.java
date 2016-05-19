@@ -9,7 +9,7 @@ import javax.ws.rs.core.Application;
  * 
  * @author lossurdo
  */
-@ApplicationPath("rest")
+@ApplicationPath("/rest")
 public class InitRest extends Application {
 
 }

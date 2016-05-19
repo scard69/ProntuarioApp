@@ -12,3 +12,4 @@ Thumbs.db
 #Ignore files created by ReSharper
 _ReSharper*/
 /ProntuarioApp/nbproject/private/
+/ProntuarioApp/build/

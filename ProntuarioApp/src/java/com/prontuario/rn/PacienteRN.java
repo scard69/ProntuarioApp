@@ -9,11 +9,13 @@ import com.prontuario.CRUD.CrudGenericoRN;
 import com.prontuario.bd.PacienteBD;
 import com.prontuario.bean.Paciente;
 import java.util.List;
+import javax.jws.WebService;
 
 /**
  *
  * @author scard
  */
+@WebService
 public class PacienteRN extends CrudGenericoRN<Paciente>{
     
     private final PacienteBD pacienteBD;
