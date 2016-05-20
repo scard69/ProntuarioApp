@@ -1,16 +1,13 @@
 
 package com.prontuario.bean;
 
-import java.util.Date;
-
-
 public class Paciente {
     
     private int codigo;
     private String nome;
     private String email;
-    private Date dataNascimento;
-    private char sexo;
+    private String dataNascimento;
+    private String sexo;
     private String escolaridade;
     private String profissao;
     private String ocupacao;
@@ -19,28 +16,15 @@ public class Paciente {
     private String bairro;
     private String cidade;
     private String cep;
-    private char estado;
+    private String estado;
 
     public Paciente(int codigo) {
         this.codigo = codigo;
     }
-    
-    public Paciente(
-            int codigo,
-            String nome, 
-            String email, 
-            Date dataNascimento, 
-            char sexo, 
-            String logadouro,
-            String numero,
-            String bairro, 
-            String cidade,
-            String cep, 
-            char estado
-    ) {
+
+    public Paciente(int codigo, String nome, String dataNascimento, String sexo, String logadouro, String numero, String bairro, String cidade, String cep, String estado) {
         this.codigo = codigo;
         this.nome = nome;
-        this.email = email;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.logadouro = logadouro;
@@ -50,6 +34,7 @@ public class Paciente {
         this.cep = cep;
         this.estado = estado;
     }
+
 
     public int getCodigo() {
         return codigo;
@@ -75,19 +60,19 @@ public class Paciente {
         this.email = email;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -155,11 +140,11 @@ public class Paciente {
         this.cep = cep;
     }
 
-    public char getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(char estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 /** 

@@ -7,6 +7,7 @@ package com.prontuario.bd;
 
 import com.prontuario.CRUD.CrudGenerico;
 import com.prontuario.bean.Paciente;
+import com.prontuario.fake.BancoDadosPaciente;
 import java.util.List;
 
 /**
@@ -17,22 +18,21 @@ public class PacienteBD implements CrudGenerico<Paciente>{
 
     @Override
     public Paciente consultar(Paciente obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BancoDadosPaciente.getInstance().consultar(obj);
     }
 
     @Override
     public boolean excluir(Paciente obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BancoDadosPaciente.getInstance().excluir(obj);
     }
 
     @Override
     public List<Paciente> pesquisar(Paciente obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BancoDadosPaciente.getInstance().pesquisar(obj);
     }
 
     @Override
     public Paciente salvar(Paciente obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BancoDadosPaciente.getInstance().salvar(obj);
     }
-    
 }

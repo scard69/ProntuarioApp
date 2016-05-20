@@ -26,21 +26,25 @@ public class PacienteRN extends CrudGenericoRN<Paciente>{
 
     @Override
     public Paciente consultar(Paciente obj) {
+        avaliarConsultar(pacienteBD, obj);
         return pacienteBD.consultar(obj);
     }
 
     @Override
     public boolean excluir(Paciente obj) {
+        avaliarExcluir(pacienteBD, obj);
         return pacienteBD.excluir(obj);
     }
 
     @Override
     public List<Paciente> pesquisar(Paciente obj) {
+        avaliarPesquisar(pacienteBD, obj);
         return pacienteBD.pesquisar(obj);
     }
 
     @Override
     public Paciente salvar(Paciente obj) {
+        avaliarSalvar(pacienteBD, obj);
         return pacienteBD.salvar(obj);
     } 
 }
