@@ -1,10 +1,48 @@
-// adicionado o AppModule para 'herdar' a lista de clientes
-angular.module('PacienteModule', ['AppModule']).
-        controller('PacienteController', ['$scope', function ($scope) {
+var app = angular.module('PacienteApp', []);
+app.controller('PacienteController', function ($scope, $http, $location) {
 
-                $scope.paciente = {};
+                $scope.urlAtual = $location.absUrl();
                 $scope.pesquisa = '';
                 $scope.editarRegistro = false;
+                
+                $scope.salvar = function () {
+                    console.log($scope.fields);
+                    $http({
+                        method: 'POST',
+                        data: $scope.fields,
+                        url: $scope.urlAtual + 'rest/pacientes',
+                        headers: {'Content-Type': 'application/json'}
+                    }).success(function (data, status, headers, config) {
+                        console.log(data);
+                        $scope.todos();
+                    }).error(function (data, status, headers, config) {
+                        console.log(data);
+                        $scope.todos();
+                    });
+                };
+                
+                $scope.todos = function() {
+                    $http.get($scope.urlAtual + 'rest/pacientes').success(function (data) {
+                        $scope.personagens = data;
+                        $scope.existemDados = true;
+                    });
+                };
+                
+                $scope.consultar = function(personagem) {
+                    $http.get($scope.urlAtual + 'rest/pacientes/' + personagem.codigo).success(function (data) {
+                        console.log(data);
+                        $scope.fields = data;
+                    });
+                };
+
+                $scope.excluir = function(personagem) {
+                    $http.delete($scope.urlAtual + 'rest/pacientes/' + personagem.codigo).success(function (data) {
+                        console.log(data);
+                        $scope.fields = data;
+                        $scope.todos();
+                    });
+                };
+                
                 
                 $scope.visualizar = function(paciente) {
                      $scope.selecionado = paciente;
@@ -52,4 +90,4 @@ angular.module('PacienteModule', ['AppModule']).
                     $scope.listaPaciente.push($scope.paciente);
                     $scope.redir('/paciente-lista');
                 };
-}]);
+});

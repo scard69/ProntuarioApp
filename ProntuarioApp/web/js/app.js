@@ -102,16 +102,7 @@ var app = angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesMo
             observacoes: 'paciente deve tomar em jejum - 3'
         }
     ];
-    
-    $scope.revisaoSaude = [
-        {
-            id:300,
-            frequencia: 'teste de descricao',
-            local : 'local teste'
-        }
-       
-    ];
-    
+        
 
       // gerar uma chave falsa para o registro
     $scope.getFakeID = function () {

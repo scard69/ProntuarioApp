@@ -13,6 +13,7 @@ import com.prontuario.rn.PacienteRN;
 import java.net.URI;
 import java.util.List;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.GenericEntity;
@@ -31,9 +32,7 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
     public PacienteRest() {
         this.pacienteRN = new PacienteRN();
     }
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{codigo}")
+    
     @Override
     public Response consultarPK(String pk) {
         try {
@@ -44,8 +43,6 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
         }
     }
     
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response pesquisar(String json) {
         try {
@@ -59,8 +56,7 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
             return exceptionParaResponse(e);
         }        
     }
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
+
     @Override
     public Response listar(Integer offset, Integer limit) {
         try {
@@ -80,7 +76,7 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
             return exceptionParaResponse(e);
         }
     }
-
+    
     @Override
     public Response salvar(Paciente obj) {
         try {
