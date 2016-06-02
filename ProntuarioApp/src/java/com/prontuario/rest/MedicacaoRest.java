@@ -73,7 +73,7 @@ public class MedicacaoRest extends CrudGenericoRest<Medicacao>{
     public Response salvar(Medicacao obj) {
         try {
             Medicacao p = medicacaoRN.salvar(obj);
-            URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(p.getCodigo())).build();
+            URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(p.getId())).build();
             return Response.created(uri).build();      
         } catch (RNException e) {
             return exceptionParaResponse(e);

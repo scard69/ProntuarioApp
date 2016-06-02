@@ -4,6 +4,9 @@
     <service name="PacienteRN">
       <implementation-class>com.prontuario.rn.PacienteRN</implementation-class>
     </service>
+    <service name="MedicacaoRN">
+      <implementation-class>com.prontuario.rn.MedicacaoRN</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

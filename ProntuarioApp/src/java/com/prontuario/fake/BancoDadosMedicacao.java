@@ -13,17 +13,11 @@ public class BancoDadosMedicacao implements CrudGenerico<Medicacao> {
     private BancoDadosMedicacao() {
         listagem = new TreeSet<>();
         
-               listagem.add(new Medicacao(
-                    100,
-                    100,
-                    '01/01/2017',
-                    'Dipirona',
-                    'teste',
-                    'teste',
-                    '10mg',
-                    '6 x 6 horas',
-                    'paciente deve tomar em jejum'
-        ));
+              listagem = new TreeSet<>();
+        
+               listagem.add(new Medicacao(1, 100, "Paracetamol", "02/06/2016", "principio ativo", "dor de cabeça", "700mg", "1x8", "observacao")
+
+        );
     }
 
     public static BancoDadosMedicacao getInstance() {

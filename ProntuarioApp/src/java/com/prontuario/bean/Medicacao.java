@@ -1,10 +1,9 @@
 package com.prontuario.bean;
-import com.prontuario.bean.Paciente;
 
 public class Medicacao {
 
     private int id;
-    private Paciente pacienteId;
+    private int pacienteId;
     private String nomeComercial;
     private String data;
     private String principioAtivo;
@@ -17,7 +16,7 @@ public class Medicacao {
         this.id = id;
     }
 
-    public Medicacao(int id, Paciente pacienteId, String nomeComercial, String data, String principioAtivo, String indicacoes, String dose, String frequencia, String observacoes) {
+    public Medicacao(int id, int pacienteId, String nomeComercial, String data, String principioAtivo, String indicacoes, String dose, String frequencia, String observacoes) {
         this.id = id;
         this.pacienteId = pacienteId;
         this.nomeComercial = nomeComercial;
@@ -37,11 +36,11 @@ public class Medicacao {
         this.id = id;
     }
 
-    public Paciente getPacienteId() {
+    public int getPacienteId() {
         return pacienteId;
     }
 
-    public void setPacienteId(Paciente pacienteId) {
+    public void setPacienteId(int pacienteId) {
         this.pacienteId = pacienteId;
     }
 
