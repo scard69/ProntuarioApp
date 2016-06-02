@@ -133,11 +133,6 @@ var app = angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesMo
             templateUrl: 'partials/paciente-lista.html',
             controller: 'PacienteController'
         }).
-
-        when('panel2',{
-            templateUrl: 'partials/paciente-lista.html',
-            controller: 'PacienteController' 
-        }).
                 
         // Medicação
         when('/historico-medicacoes', {

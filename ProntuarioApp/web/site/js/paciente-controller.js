@@ -1,4 +1,4 @@
-var app = angular.module('PacienteApp', []);
+var app = angular.module('PacienteModule', []);
 app.controller('PacienteController', function ($scope, $http, $location) {
 
                 $scope.urlAtual = $location.absUrl();
@@ -23,20 +23,20 @@ app.controller('PacienteController', function ($scope, $http, $location) {
                 
                 $scope.todos = function() {
                     $http.get($scope.urlAtual + 'rest/pacientes').success(function (data) {
-                        $scope.personagens = data;
+                        $scope.pacientes = data;
                         $scope.existemDados = true;
                     });
                 };
                 
-                $scope.consultar = function(personagem) {
-                    $http.get($scope.urlAtual + 'rest/pacientes/' + personagem.codigo).success(function (data) {
+                $scope.consultar = function(paciente) {
+                    $http.get($scope.urlAtual + 'rest/pacientes/' + paciente.codigo).success(function (data) {
                         console.log(data);
                         $scope.fields = data;
                     });
                 };
 
-                $scope.excluir = function(personagem) {
-                    $http.delete($scope.urlAtual + 'rest/pacientes/' + personagem.codigo).success(function (data) {
+                $scope.excluir = function(paciente) {
+                    $http.delete($scope.urlAtual + 'rest/pacientes/' + paciente.codigo).success(function (data) {
                         console.log(data);
                         $scope.fields = data;
                         $scope.todos();
