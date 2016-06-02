@@ -1,7 +1,7 @@
 
 package com.prontuario.bean;
 
-public class Paciente {
+public class Paciente implements Comparable<Paciente>{
     
     private int codigo;
     private String nome;
@@ -190,4 +190,9 @@ public class Paciente {
                 + "cep=" + cep + ","
                 + " estado=" + estado + '}';
     } 
+
+    @Override
+    public int compareTo(Paciente o) {
+        return Integer.valueOf(codigo).compareTo(Integer.valueOf(o.getCodigo()));
+    }
 }

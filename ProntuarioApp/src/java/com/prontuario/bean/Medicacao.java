@@ -1,6 +1,6 @@
 package com.prontuario.bean;
 
-public class Medicacao {
+public class Medicacao implements Comparable<Medicacao>{
 
     private int id;
     private int pacienteId;
@@ -136,5 +136,10 @@ public class Medicacao {
                 + ", dose=" + dose 
                 + ", frequencia=" + frequencia 
                 + ", observacoes=" + observacoes + '}';
+    }
+    
+    @Override
+    public int compareTo(Medicacao o) {
+        return Integer.valueOf(id).compareTo(Integer.valueOf(o.getId()));
     }
 }

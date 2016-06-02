@@ -1,4 +1,4 @@
-package com.prontuario.CRUD;
+package com.prontuario.crud;
 
 import com.prontuario.infra.RNException;
 import java.util.List;

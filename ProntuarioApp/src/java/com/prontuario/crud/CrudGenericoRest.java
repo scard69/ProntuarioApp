@@ -1,4 +1,4 @@
-package com.prontuario.CRUD;
+package com.prontuario.crud;
 
 import com.prontuario.infra.RNException;
 import java.util.List;
@@ -57,12 +57,12 @@ public abstract class CrudGenericoRest<T> {
     @POST
     @Produces(value = MediaType.APPLICATION_JSON)
     @Consumes(value = MediaType.APPLICATION_JSON)
-    public abstract Response salvar(T obj);
+    public abstract Response salvar(String obj);
 
     @PUT
     @Produces(value = MediaType.APPLICATION_JSON)
     @Consumes(value = MediaType.APPLICATION_JSON)
-    public Response alterar(T obj) {
+    public Response alterar(String obj) {
         return salvar(obj);
     }
 

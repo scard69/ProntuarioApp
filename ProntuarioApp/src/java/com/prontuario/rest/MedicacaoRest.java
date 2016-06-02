@@ -1,7 +1,7 @@
 package com.prontuario.rest;
 
 import com.google.gson.Gson;
-import com.prontuario.CRUD.CrudGenericoRest;
+import com.prontuario.crud.CrudGenericoRest;
 import com.prontuario.bean.Medicacao;
 import com.prontuario.infra.RNException;
 import com.prontuario.rn.MedicacaoRN;
@@ -29,7 +29,7 @@ public class MedicacaoRest extends CrudGenericoRest<Medicacao>{
     public Response consultarPK(String pk) {
         try {
             Medicacao m = medicacaoRN.consultar(new Medicacao(Integer.parseInt(pk)));
-            return Response.ok(m).build();
+            return Response.ok(new Gson().toJson(m)).build();
         } catch (RNException e) {
             return exceptionParaResponse(e);
         }
@@ -70,9 +70,9 @@ public class MedicacaoRest extends CrudGenericoRest<Medicacao>{
     }
     
     @Override
-    public Response salvar(Medicacao obj) {
+    public Response salvar(String obj) {
         try {
-            Medicacao p = medicacaoRN.salvar(obj);
+            Medicacao p = medicacaoRN.salvar(new Gson().fromJson(obj, Medicacao.class));
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(p.getId())).build();
             return Response.created(uri).build();      
         } catch (RNException e) {
@@ -86,9 +86,7 @@ public class MedicacaoRest extends CrudGenericoRest<Medicacao>{
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         
-        GenericEntity<List<Medicacao>> lista = new GenericEntity<List<Medicacao>>(obj) {
-        };
-        return Response.ok(lista).build();  
+        return Response.ok(new Gson().toJson(obj)).build();  
     }
     
 }

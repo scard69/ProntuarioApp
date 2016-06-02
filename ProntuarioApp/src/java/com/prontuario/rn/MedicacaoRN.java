@@ -1,6 +1,6 @@
 package com.prontuario.rn;
 
-import com.prontuario.CRUD.CrudGenericoRN;
+import com.prontuario.crud.CrudGenericoRN;
 import com.prontuario.bd.MedicacaoBD;
 import com.prontuario.bean.Medicacao;
 import java.util.List;

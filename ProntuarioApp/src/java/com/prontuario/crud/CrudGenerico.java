@@ -1,4 +1,4 @@
-package com.prontuario.CRUD;
+package com.prontuario.crud;
 
 import java.util.List;
 

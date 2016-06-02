@@ -6,7 +6,7 @@
 package com.prontuario.rest;
 
 import com.google.gson.Gson;
-import com.prontuario.CRUD.CrudGenericoRest;
+import com.prontuario.crud.CrudGenericoRest;
 import com.prontuario.bean.Paciente;
 import com.prontuario.infra.RNException;
 import com.prontuario.rn.PacienteRN;
@@ -37,7 +37,7 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
     public Response consultarPK(String pk) {
         try {
             Paciente m = pacienteRN.consultar(new Paciente(Integer.parseInt(pk)));
-            return Response.ok(m).build();
+            return Response.ok(new Gson().toJson(m)).build();
         } catch (RNException e) {
             return exceptionParaResponse(e);
         }
@@ -78,9 +78,9 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
     }
     
     @Override
-    public Response salvar(Paciente obj) {
+    public Response salvar(String obj) {
         try {
-            Paciente p = pacienteRN.salvar(obj);
+            Paciente p = pacienteRN.salvar(new Gson().fromJson(obj, Paciente.class));
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(p.getCodigo())).build();
             return Response.created(uri).build();      
         } catch (RNException e) {
@@ -93,10 +93,8 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
                 if (obj == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        
-        GenericEntity<List<Paciente>> lista = new GenericEntity<List<Paciente>>(obj) {
-        };
-        return Response.ok(lista).build();  
+
+        return Response.ok(new Gson().toJson(obj)).build();  
     }
     
 }

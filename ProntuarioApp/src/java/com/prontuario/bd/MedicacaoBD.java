@@ -1,6 +1,6 @@
 package com.prontuario.bd;
 
-import com.prontuario.CRUD.CrudGenerico;
+import com.prontuario.crud.CrudGenerico;
 import com.prontuario.bean.Medicacao;
 import com.prontuario.fake.BancoDadosMedicacao;
 import java.util.List;

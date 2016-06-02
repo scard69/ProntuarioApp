@@ -1,7 +1,7 @@
 package com.prontuario.fake;
 
 import com.prontuario.bean.Paciente;
-import com.prontuario.CRUD.CrudGenerico;
+import com.prontuario.crud.CrudGenerico;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;

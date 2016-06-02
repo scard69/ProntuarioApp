@@ -5,7 +5,7 @@
  */
 package com.prontuario.rn;
 
-import com.prontuario.CRUD.CrudGenericoRN;
+import com.prontuario.crud.CrudGenericoRN;
 import com.prontuario.bd.PacienteBD;
 import com.prontuario.bean.Paciente;
 import java.util.List;
