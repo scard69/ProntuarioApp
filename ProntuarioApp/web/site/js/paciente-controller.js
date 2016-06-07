@@ -1,7 +1,7 @@
 var app = angular.module('PacienteModule', []);
 app.controller('PacienteController', function ($scope, $http, $location) {
-
-                $scope.urlAtual = $location.absUrl();
+                
+                $scope.urlApi = '/ProntuarioApp/rest';
                 $scope.pesquisa = '';
                 $scope.editarRegistro = false;
                 
@@ -10,7 +10,7 @@ app.controller('PacienteController', function ($scope, $http, $location) {
                     $http({
                         method: 'POST',
                         data: $scope.fields,
-                        url: $scope.urlAtual + 'rest/pacientes',
+                        url: $scope.urlApi + '/pacientes',
                         headers: {'Content-Type': 'application/json'}
                     }).success(function (data, status, headers, config) {
                         console.log(data);
@@ -22,21 +22,21 @@ app.controller('PacienteController', function ($scope, $http, $location) {
                 };
                 
                 $scope.todos = function() {
-                    $http.get($scope.urlAtual + 'rest/pacientes').success(function (data) {
-                        $scope.pacientes = data;
+                    $http.get($scope.urlApi + '/pacientes').success(function (data) {
+                        $scope.listaPaciente = data;
                         $scope.existemDados = true;
                     });
                 };
                 
                 $scope.consultar = function(paciente) {
-                    $http.get($scope.urlAtual + 'rest/pacientes/' + paciente.codigo).success(function (data) {
+                    $http.get($scope.urlApi + '/pacientes/' + paciente.codigo).success(function (data) {
                         console.log(data);
                         $scope.fields = data;
                     });
                 };
 
                 $scope.excluir = function(paciente) {
-                    $http.delete($scope.urlAtual + 'rest/pacientes/' + paciente.codigo).success(function (data) {
+                    $http.delete($scope.urlApi + '/pacientes/' + paciente.codigo).success(function (data) {
                         console.log(data);
                         $scope.fields = data;
                         $scope.todos();
@@ -90,4 +90,6 @@ app.controller('PacienteController', function ($scope, $http, $location) {
                     $scope.listaPaciente.push($scope.paciente);
                     $scope.redir('/paciente-lista');
                 };
+                
+                $scope.todos();
 });
