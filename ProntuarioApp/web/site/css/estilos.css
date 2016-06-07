@@ -35,15 +35,26 @@
 }
 
 .cabecalhoLateral img {
-    margin-top: -40px;  
+    margin-top: 10px; 
 }
 
 .espacamento{
     margin-bottom: 20px;
 }
 
+#lado {
+    background-color: #F0EFF2;
+}
 
+#fotoLogo {
+    width: 65px;
+    height: 65px;
+}
 
+.img-circle {
+    width: 76px;
+    height: 76px;
+}
 
 
 
