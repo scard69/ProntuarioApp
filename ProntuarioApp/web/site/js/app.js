@@ -2,20 +2,15 @@
 
 var app = angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesModule'])
 
-.controller('AppController', ['$scope', '$rootScope', '$location', '$http', function($scope, $rootScope, $location) {
+.controller('AppController', function($scope, $rootScope, $location) {
     $rootScope.pacienteSelecionado = null;
-    
-    
     
     // listagem no escopo maior da aplicação;
     // disponível a todos os controllers
     $scope.listaPaciente = [];
-    
-
     $scope.listaMedicacao = [];
-               
-
-      // gerar uma chave falsa para o registro
+    
+    // gerar uma chave falsa para o registro
     $scope.getFakeID = function () {
          return Math.floor((Math.random() * 10000) + 500);
     };
@@ -24,9 +19,9 @@ var app = angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesMo
     $scope.redir = function (onde) {
          $location.path(onde);
     };
-}])
+})
 
-.config(['$routeProvider', function ($routeProvider) {        
+.config(function ($routeProvider) {
     $routeProvider.
     	// Paciente
         when('/paciente-novo', {
@@ -82,5 +77,4 @@ var app = angular.module('AppModule', ['ngRoute', 'PacienteModule','MedicacoesMo
         otherwise({
             redirectTo: '/404'
         });
-}]);
-
+});
