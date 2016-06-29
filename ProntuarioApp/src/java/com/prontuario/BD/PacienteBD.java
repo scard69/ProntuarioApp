@@ -3,37 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.prontuario.rest;
+package com.prontuario.BD;
 
-import com.prontuario.bean.Medicacao;
+import com.prontuario.bean.Paciente;
 import com.senac.util.CrudGenerico;
 import java.util.List;
-import javax.ws.rs.Path;
 
 /**
  *
  * @author scard
  */
-@Path("/medicacoes")
-public class MedicacaoRest implements CrudGenerico<Medicacao>{
+public class PacienteBD implements CrudGenerico<Paciente>{
 
     @Override
-    public void salvar(Medicacao bean) {
+    public void salvar(Paciente bean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void excluir(Medicacao bean) {
+    public void excluir(Paciente bean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Medicacao> listar(Medicacao bean) {
+    public List<Paciente> listar(Paciente bean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Medicacao consultar(Medicacao bean) {
+    public Paciente consultar(Paciente bean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

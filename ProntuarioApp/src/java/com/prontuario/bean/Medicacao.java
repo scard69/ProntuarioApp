@@ -1,26 +1,90 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.prontuario.bean;
 
-public class Medicacao implements Comparable<Medicacao>{
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-    private int id;
-    private int pacienteId;
+/**
+ *
+ * @author scard
+ */
+@Entity
+@Table(name = "medicacao")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Medicacao.findAll", query = "SELECT m FROM Medicacao m"),
+    @NamedQuery(name = "Medicacao.findById", query = "SELECT m FROM Medicacao m WHERE m.id = :id"),
+    @NamedQuery(name = "Medicacao.findByData", query = "SELECT m FROM Medicacao m WHERE m.data = :data"),
+    @NamedQuery(name = "Medicacao.findByNomeComercial", query = "SELECT m FROM Medicacao m WHERE m.nomeComercial = :nomeComercial"),
+    @NamedQuery(name = "Medicacao.findByPrincipioAtivo", query = "SELECT m FROM Medicacao m WHERE m.principioAtivo = :principioAtivo"),
+    @NamedQuery(name = "Medicacao.findByIndicacoes", query = "SELECT m FROM Medicacao m WHERE m.indicacoes = :indicacoes"),
+    @NamedQuery(name = "Medicacao.findByDose", query = "SELECT m FROM Medicacao m WHERE m.dose = :dose"),
+    @NamedQuery(name = "Medicacao.findByFrequencia", query = "SELECT m FROM Medicacao m WHERE m.frequencia = :frequencia")})
+public class Medicacao implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    @Basic(optional = false)
+    @Column(name = "data")
+    @Temporal(TemporalType.DATE)
+    private Date data;
+    @Basic(optional = false)
+    @Column(name = "nomeComercial")
     private String nomeComercial;
-    private String data;
+    @Basic(optional = false)
+    @Column(name = "principioAtivo")
     private String principioAtivo;
+    @Basic(optional = false)
+    @Column(name = "indicacoes")
     private String indicacoes;
+    @Basic(optional = false)
+    @Column(name = "dose")
     private String dose;
+    @Basic(optional = false)
+    @Column(name = "frequencia")
     private String frequencia;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "observacoes")
     private String observacoes;
+    @JoinColumn(name = "codigoPaciente", referencedColumnName = "codigo")
+    @ManyToOne(optional = false)
+    private Paciente codigoPaciente;
 
-    public Medicacao(int id) {
+    public Medicacao() {
+    }
+
+    public Medicacao(Integer id) {
         this.id = id;
     }
 
-    public Medicacao(int id, int pacienteId, String nomeComercial, String data, String principioAtivo, String indicacoes, String dose, String frequencia, String observacoes) {
+    public Medicacao(Integer id, Date data, String nomeComercial, String principioAtivo, String indicacoes, String dose, String frequencia, String observacoes) {
         this.id = id;
-        this.pacienteId = pacienteId;
-        this.nomeComercial = nomeComercial;
         this.data = data;
+        this.nomeComercial = nomeComercial;
         this.principioAtivo = principioAtivo;
         this.indicacoes = indicacoes;
         this.dose = dose;
@@ -28,20 +92,20 @@ public class Medicacao implements Comparable<Medicacao>{
         this.observacoes = observacoes;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getPacienteId() {
-        return pacienteId;
+    public Date getData() {
+        return data;
     }
 
-    public void setPacienteId(int pacienteId) {
-        this.pacienteId = pacienteId;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public String getNomeComercial() {
@@ -50,14 +114,6 @@ public class Medicacao implements Comparable<Medicacao>{
 
     public void setNomeComercial(String nomeComercial) {
         this.nomeComercial = nomeComercial;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
     }
 
     public String getPrincipioAtivo() {
@@ -100,26 +156,29 @@ public class Medicacao implements Comparable<Medicacao>{
         this.observacoes = observacoes;
     }
 
+    public Paciente getCodigoPaciente() {
+        return codigoPaciente;
+    }
+
+    public void setCodigoPaciente(Paciente codigoPaciente) {
+        this.codigoPaciente = codigoPaciente;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + this.id;
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Medicacao)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Medicacao other = (Medicacao) obj;
-        if (this.id != other.id) {
+        Medicacao other = (Medicacao) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -127,19 +186,7 @@ public class Medicacao implements Comparable<Medicacao>{
 
     @Override
     public String toString() {
-        return "Medicacao{" + "id=" + id 
-                + ", pacienteId=" + pacienteId 
-                + ", nomeComercial=" + nomeComercial 
-                + ", data=" + data 
-                + ", principioAtivo=" + principioAtivo 
-                + ", indicacoes=" + indicacoes 
-                + ", dose=" + dose 
-                + ", frequencia=" + frequencia 
-                + ", observacoes=" + observacoes + '}';
+        return "com.prontuario.bean.Medicacao[ id=" + id + " ]";
     }
     
-    @Override
-    public int compareTo(Medicacao o) {
-        return Integer.valueOf(id).compareTo(Integer.valueOf(o.getId()));
-    }
 }

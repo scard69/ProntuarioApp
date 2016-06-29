@@ -1,43 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.prontuario.rn;
 
-import com.prontuario.crud.CrudGenericoRN;
-import com.prontuario.bd.MedicacaoBD;
 import com.prontuario.bean.Medicacao;
+import com.senac.util.CrudGenerico;
 import java.util.List;
 import javax.jws.WebService;
 
-
+/**
+ *
+ * @author scard
+ */
 @WebService
-public class MedicacaoRN extends CrudGenericoRN<Medicacao>{
+public class MedicacaoRN implements CrudGenerico<Medicacao>{
+
+    @Override
+    public void salvar(Medicacao bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void excluir(Medicacao bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Medicacao> listar(Medicacao bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Medicacao consultar(Medicacao bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    private final MedicacaoBD medicacaoBD;
-    
-    public MedicacaoRN() {
-        this.medicacaoBD = new MedicacaoBD();
-    }
-
-    @Override
-    public Medicacao consultar(Medicacao obj) {
-        avaliarConsultar(medicacaoBD, obj);
-        return medicacaoBD.consultar(obj);
-    }
-
-    @Override
-    public boolean excluir(Medicacao obj) {
-        avaliarExcluir(medicacaoBD, obj);
-        return medicacaoBD.excluir(obj);
-    }
-
-    @Override
-    public List<Medicacao> pesquisar(Medicacao obj) {
-        avaliarPesquisar(medicacaoBD, obj);
-        return medicacaoBD.pesquisar(obj);
-    }
-
-    @Override
-    public Medicacao salvar(Medicacao obj) {
-        avaliarSalvar(medicacaoBD, obj);
-        return medicacaoBD.salvar(obj);
-    } 
 }
-

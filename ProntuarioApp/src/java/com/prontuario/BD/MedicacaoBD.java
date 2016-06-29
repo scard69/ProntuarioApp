@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.prontuario.rest;
+package com.prontuario.BD;
 
 import com.prontuario.bean.Medicacao;
 import com.senac.util.CrudGenerico;
 import java.util.List;
-import javax.ws.rs.Path;
 
 /**
  *
  * @author scard
  */
-@Path("/medicacoes")
-public class MedicacaoRest implements CrudGenerico<Medicacao>{
+public class MedicacaoBD implements CrudGenerico<Medicacao>{
 
     @Override
     public void salvar(Medicacao bean) {

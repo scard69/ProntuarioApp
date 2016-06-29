@@ -5,9 +5,8 @@
  */
 package com.prontuario.rn;
 
-import com.prontuario.crud.CrudGenericoRN;
-import com.prontuario.bd.PacienteBD;
 import com.prontuario.bean.Paciente;
+import com.senac.util.CrudGenerico;
 import java.util.List;
 import javax.jws.WebService;
 
@@ -16,35 +15,26 @@ import javax.jws.WebService;
  * @author scard
  */
 @WebService
-public class PacienteRN extends CrudGenericoRN<Paciente>{
+public class PacienteRN implements CrudGenerico<Paciente>{
+
+    @Override
+    public void salvar(Paciente bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void excluir(Paciente bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Paciente> listar(Paciente bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Paciente consultar(Paciente bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    private final PacienteBD pacienteBD;
-    
-    public PacienteRN() {
-        this.pacienteBD = new PacienteBD();
-    }
-
-    @Override
-    public Paciente consultar(Paciente obj) {
-        avaliarConsultar(pacienteBD, obj);
-        return pacienteBD.consultar(obj);
-    }
-
-    @Override
-    public boolean excluir(Paciente obj) {
-        avaliarExcluir(pacienteBD, obj);
-        return pacienteBD.excluir(obj);
-    }
-
-    @Override
-    public List<Paciente> pesquisar(Paciente obj) {
-        avaliarPesquisar(pacienteBD, obj);
-        return pacienteBD.pesquisar(obj);
-    }
-
-    @Override
-    public Paciente salvar(Paciente obj) {
-        avaliarSalvar(pacienteBD, obj);
-        return pacienteBD.salvar(obj);
-    } 
 }
