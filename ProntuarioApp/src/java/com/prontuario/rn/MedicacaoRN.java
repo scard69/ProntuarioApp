@@ -5,9 +5,11 @@
  */
 package com.prontuario.rn;
 
+import com.prontuario.BD.MedicacaoBD;
 import com.prontuario.bean.Medicacao;
 import com.senac.util.CrudGenerico;
 import java.util.List;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 /**
@@ -17,24 +19,34 @@ import javax.jws.WebService;
 @WebService
 public class MedicacaoRN implements CrudGenerico<Medicacao>{
 
+    private MedicacaoBD medicacaobd;
+
+    public MedicacaoRN() {
+        medicacaobd = new MedicacaoBD();
+    }
+    
+    
     @Override
-    public void salvar(Medicacao bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void salvar(@WebParam(name = "medicacao")Medicacao medicacao) {
+        if(medicacao.getCodigoPaciente() == null || "".equals(medicacao.getCodigoPaciente())){
+            throw new RuntimeException("Campo codigoPaciente obrigatório");
+        }
+        medicacaobd.salvar(medicacao);
     }
 
     @Override
-    public void excluir(Medicacao bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void excluir(@WebParam(name = "medicacao")Medicacao medicacao) {
+        medicacaobd.excluir(medicacao);
     }
 
     @Override
-    public List<Medicacao> listar(Medicacao bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Medicacao> listar(@WebParam(name = "medicacao")Medicacao medicacao) {
+        return medicacaobd.listar(medicacao);
     }
 
     @Override
-    public Medicacao consultar(Medicacao bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Medicacao consultar(Medicacao medicacao) {
+        return medicacaobd.consultar(medicacao);
     }
     
 }

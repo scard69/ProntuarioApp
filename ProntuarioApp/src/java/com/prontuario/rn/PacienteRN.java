@@ -5,9 +5,11 @@
  */
 package com.prontuario.rn;
 
+import com.prontuario.BD.PacienteBD;
 import com.prontuario.bean.Paciente;
 import com.senac.util.CrudGenerico;
 import java.util.List;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 /**
@@ -16,25 +18,40 @@ import javax.jws.WebService;
  */
 @WebService
 public class PacienteRN implements CrudGenerico<Paciente>{
+    
+    private PacienteBD pacientebd;
 
+    public PacienteRN() {
+        pacientebd = new PacienteBD();
+    }       
+    
     @Override
-    public void salvar(Paciente bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void salvar(@WebParam(name = "paciente")Paciente paciente) {
+        if(paciente.getEmail()==null || "".equals(paciente.getEmail())) {
+            throw new RuntimeException("Campo Email obrigatório");
+        }
+        if(paciente.getNome()==null || "".equals(paciente.getNome())) {
+            throw new RuntimeException("Campo Nome obrigatório");
+        }
+        if(paciente.getContato()==null || "".equals(paciente.getContato())) {
+            throw new RuntimeException("Campo Contato obrigatório");
+        } 
+        pacientebd.salvar(paciente);
     }
 
     @Override
-    public void excluir(Paciente bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void excluir(@WebParam(name = "paciente")Paciente paciente) {
+        pacientebd.excluir(paciente);
     }
 
     @Override
-    public List<Paciente> listar(Paciente bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Paciente> listar(@WebParam(name = "paciente")Paciente paciente) {
+        return pacientebd.listar(paciente);
     }
 
     @Override
-    public Paciente consultar(Paciente bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Paciente consultar(Paciente paciente) {
+        return pacientebd.consultar(paciente);
     }
     
 }
