@@ -7,7 +7,7 @@ package com.prontuario.rn;
 
 import com.prontuario.BD.PacienteBD;
 import com.prontuario.bean.Paciente;
-import com.senac.util.CrudGenerico;
+import com.prontuario.crud.CrudGenerico;
 import java.util.List;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -16,7 +16,6 @@ import javax.jws.WebService;
  *
  * @author scard
  */
-@WebService
 public class PacienteRN implements CrudGenerico<Paciente>{
     
     private PacienteBD pacientebd;

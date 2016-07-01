@@ -7,7 +7,7 @@ package com.prontuario.rn;
 
 import com.prontuario.BD.MedicacaoBD;
 import com.prontuario.bean.Medicacao;
-import com.senac.util.CrudGenerico;
+import com.prontuario.crud.CrudGenerico;
 import java.util.List;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -16,7 +16,6 @@ import javax.jws.WebService;
  *
  * @author scard
  */
-@WebService
 public class MedicacaoRN implements CrudGenerico<Medicacao>{
 
     private MedicacaoBD medicacaobd;
@@ -27,7 +26,7 @@ public class MedicacaoRN implements CrudGenerico<Medicacao>{
     
     
     @Override
-    public void salvar(@WebParam(name = "medicacao")Medicacao medicacao) {
+    public void salvar(@WebParam(name = "medicacao") Medicacao medicacao) {
         if(medicacao.getCodigoPaciente() == null || "".equals(medicacao.getCodigoPaciente())){
             throw new RuntimeException("Campo codigoPaciente obrigatório");
         }

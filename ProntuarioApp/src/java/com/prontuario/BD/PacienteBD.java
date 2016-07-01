@@ -6,7 +6,7 @@
 package com.prontuario.BD;
 
 import com.prontuario.bean.Paciente;
-import com.senac.util.CrudGenerico;
+import com.prontuario.crud.CrudGenerico;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

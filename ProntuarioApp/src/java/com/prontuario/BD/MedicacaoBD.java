@@ -6,7 +6,7 @@
 package com.prontuario.BD;
 
 import com.prontuario.bean.Medicacao;
-import com.senac.util.CrudGenerico;
+import com.prontuario.crud.CrudGenerico;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -27,7 +27,7 @@ public class MedicacaoBD implements CrudGenerico<Medicacao>{
     }
         
     @Override
-    public void salvar(Medicacao medicacao) {
+    public  salvar(Medicacao medicacao) {
         em.getTransaction().begin();
         em.merge(medicacao);
         em.getTransaction().commit();
