@@ -3,10 +3,17 @@ package com.prontuario.crud;
 import java.util.List;
 
 public interface CrudGenerico<T> {
+
+    T consultar(T bean);
+
+    boolean excluir(T bean);
     
-    public T salvar(T bean);
-    public boolean excluir(T bean);
-    public List<T> listar(T bean);
-    public T consultar(T bean);
+    T salvar(T bean);    
+
+    T alterar(T bean);    
+    
+    // métodos válidos para as pesquisas REST
+    List<T> pesquisar(T bean);    
+    List<T> pesquisar(String valor);
     
 }

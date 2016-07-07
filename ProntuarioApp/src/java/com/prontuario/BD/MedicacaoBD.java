@@ -7,6 +7,7 @@ package com.prontuario.BD;
 
 import com.prontuario.bean.Medicacao;
 import com.prontuario.crud.CrudGenerico;
+import com.prontuario.crud.CrudGenericoBD;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,45 +18,24 @@ import javax.persistence.Query;
  *
  * @author scard
  */
-public class MedicacaoBD implements CrudGenerico<Medicacao>{
-    
-    private EntityManager em;
+public class MedicacaoBD extends CrudGenericoBD<Medicacao>{
 
-    public MedicacaoBD() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("prontuario");
-        em = emf.createEntityManager();
+    @Override
+    public List<Medicacao> pesquisar(Medicacao bean) {
+        return pesquisar(bean.getNomeComercial());
+    }
+
+    @Override
+    public List<Medicacao> pesquisar(String valor) {
+        EntityManager em = createEntityManager();        
+        try {
+            Query query = em.createNamedQuery("medicacao.findByMedicacao");
+            query.setParameter("medicacao", "%" + valor + "%");
+            return query.getResultList();
+        } finally {
+            em.close();        
+        } 
     }
         
-    @Override
-    public  salvar(Medicacao medicacao) {
-        em.getTransaction().begin();
-        em.merge(medicacao);
-        em.getTransaction().commit();
-    }
-
-    @Override
-    public void excluir(Medicacao medicacao) {
-        em.getTransaction().begin();
-        em.remove(em.find(Medicacao.class, medicacao.getId()));
-        em.getTransaction().commit();        
-    }
-
-    @Override
-    public List<Medicacao> listar(Medicacao medicacao) {
-        StringBuilder sb = new StringBuilder("select c from medicacao c where 1=1");
-        if(medicacao.getCodigoPaciente()!=null && medicacao.getId()!=0) {
-            sb.append("and c.codigoPaciente=:c ");
-        }        
-        Query qry = em.createQuery(sb.toString());
-        if(medicacao.getCodigoPaciente()!=null && medicacao.getId()!=0) {
-            qry.setParameter("c", medicacao.getCodigoPaciente());
-        }        
-        return qry.getResultList();
-        
-    }
-
-    @Override
-    public Medicacao consultar(Medicacao medicacao) {
-        return em.find(Medicacao.class, medicacao.getId());
-    }  
+ 
 }

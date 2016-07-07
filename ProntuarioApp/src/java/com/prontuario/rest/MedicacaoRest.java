@@ -7,7 +7,10 @@ package com.prontuario.rest;
 
 import com.google.gson.Gson;
 import com.prontuario.bean.Medicacao;
+import com.prontuario.bean.Paciente;
 import com.prontuario.crud.CrudGenericoRest;
+import com.prontuario.crud.ErroRest;
+import com.prontuario.crud.RNException;
 import com.prontuario.rn.MedicacaoRN;
 import java.net.URI;
 import java.util.List;
@@ -21,52 +24,68 @@ import javax.ws.rs.core.Response;
  */
 @Path("/medicacoes")
 public class MedicacaoRest extends CrudGenericoRest<Medicacao>{
-    
-    private MedicacaoRN medicacaorn;
+
+    private final MedicacaoRN medicacaoRN;
 
     public MedicacaoRest() {
-        this.medicacaorn = new MedicacaoRN();
+        medicacaoRN = new MedicacaoRN();
     }
     
     @Override
     public Response consultarPK(String pk) {
-        Medicacao m = medicacaorn.consultar(new Medicacao(Integer.parseInt(pk)));
-        return Response.ok(m).build();
-    }
-
-    @Override
-    public Response pesquisar(String json) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Response listar(Integer offset, Integer limit) {
-        List<Medicacao> ret = medicacaorn.listar(null);
-        return gerarResponseParaCollection(ret);
+    public Response pesquisar(String q) {
+        try {
+            List<Medicacao> ret = medicacaoRN.pesquisar(q);
+            return gerarResponseParaCollection(ret);
+        } catch (RNException e) {
+            return exceptionParaResponse(e);
+        }        
     }
 
     @Override
     public Response excluirPK(String pk) {
-        medicacaorn.excluir(new Medicacao(Integer.parseInt(pk)));
-        return Response.ok().build();
+        try {
+            medicacaoRN.excluir(new Medicacao(Integer.parseInt(pk)));
+            return Response.ok().build();
+        } catch (RNException e) {
+            return exceptionParaResponse(e);
+        }        
     }
 
     @Override
-    public Response salvar(String medicacao) {
-       medicacaorn.salvar(new Gson().fromJson(medicacao, Medicacao.class));
+    public Response salvar(String obj) {
+        try {
+            Medicacao m = medicacaoRN.salvar(new Gson().fromJson(obj, Medicacao.class));
+            URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(m.getId())).build();
+            return Response.created(uri).build();
+        } catch (RNException e) {
+            return exceptionParaResponse(e);
+        }        
+    }
 
-        URI uri = uriInfo.getAbsolutePathBuilder().path(medicacao.getId().toString()).build();
-        return Response.created(uri).build();        
+    @Override
+    public Response alterar(String obj) {
+        try {
+            Medicacao m = medicacaoRN.alterar(new Gson().fromJson(obj, Medicacao.class));
+            URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(m.getId())).build();
+            return Response.created(uri).build();
+        } catch (RNException e) {
+            return exceptionParaResponse(e);
+        }       
     }
 
     @Override
     protected Response gerarResponseParaCollection(List<Medicacao> obj) {
-        if (obj == null || obj.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+        if (obj == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                .entity(toJSON(new ErroRest("Nenhum registro disponível; lista vazia")))
+                .build();
         }
 
-        GenericEntity<List<Medicacao>> lista = new GenericEntity<List<Medicacao>>(obj) {
-        };
-        return Response.ok(lista).build();        
-    }    
+        return Response.ok(new Gson().toJson(obj)).build();
+    }               
 }

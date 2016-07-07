@@ -1,5 +1,6 @@
 package com.prontuario.crud;
 
+import com.google.gson.Gson;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -10,7 +11,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
@@ -33,21 +33,15 @@ public abstract class CrudGenericoRest<T> {
 
     @Context
     protected HttpHeaders headers;
-
+    
     @GET
     @Path("{pk}")
     @Produces(value = MediaType.APPLICATION_JSON)
     public abstract Response consultarPK(@PathParam(value = "pk") String pk);
 
     @GET
-    @Path("/search/{json}")
     @Produces(value = MediaType.APPLICATION_JSON)
-    public abstract Response pesquisar(@PathParam(value = "json") String json);
-
-    @GET
-    @Produces(value = MediaType.APPLICATION_JSON)
-    public abstract Response listar(@QueryParam("offset") Integer offset,
-            @QueryParam("limit") Integer limit);
+    public abstract Response pesquisar(@QueryParam(value = "q") String q);
 
     @DELETE
     @Path("{pk}")
@@ -61,15 +55,16 @@ public abstract class CrudGenericoRest<T> {
     @PUT
     @Produces(value = MediaType.APPLICATION_JSON)
     @Consumes(value = MediaType.APPLICATION_JSON)
-    public Response alterar(String obj) {
-        return salvar(obj);
-    }
+    public abstract Response alterar(String obj);
 
     /**
      * Pela característica da conversão das coleções
      * do Java em JSON, este método não permite
      * implementação genérica; deve ser implementado
      * nas classes filhas.
+     * 
+     * Exemplo:
+     * GenericEntity<List<Teste>> genericEntity = new GenericEntity<List<Teste>>(LISTA) {};
      * 
      * @param obj
      * @return 
@@ -84,28 +79,29 @@ public abstract class CrudGenericoRest<T> {
      * @param exception
      * @return 
      */
-//    protected Response exceptionParaResponse(RNException exception) {
-//        if (exception.getTipo().equals(RNException.Tipo.REGISTRO_JA_EXISTE)) {
-//            return Response.status(Response.Status.CONFLICT).build();
-//        } else if (exception.getTipo().equals(RNException.Tipo.REGISTRO_NAO_ENCONTRADO)) {
-//            return Response.status(Response.Status.NOT_FOUND).build();
-//        }
-//
-//        return Response.serverError().build();                
-//    }
+    protected Response exceptionParaResponse(RNException exception) {
+        if (exception.getTipo().equals(RNException.Tipo.REGISTRO_JA_EXISTE)) {
+            return Response.status(Response.Status.CONFLICT)
+                .entity(toJSON(new ErroRest(exception.getTipo().toString())))
+                .build();
+        } else if (exception.getTipo().equals(RNException.Tipo.REGISTRO_NAO_ENCONTRADO)) {
+            return Response.status(Response.Status.NOT_FOUND)
+                .entity(toJSON(new ErroRest(exception.getTipo().toString())))
+                .build();
+        }
 
-    // ---------------------------------------------------------------
-    // EXEMPLO DE AUTENTICAÇÃO (A IMPLEMENTAR)
-    @GET
-    @Path("/teste")
-    public Response teste() {
-        validaPermissao();
-        return Response.ok().build();
+        return Response.serverError()
+            .entity(toJSON(new ErroRest(exception.getMessage())))
+            .build();                
     }
 
-    private void validaPermissao() {
-        if (headers.getHeaderString("senha") == null || !"teste".equals(headers.getHeaderString("senha"))) {
-            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
-        }
+    /**
+     * Converte um objeto qualquer em formato JSON
+     * 
+     * @param object
+     * @return 
+     */
+    protected String toJSON(Object object) {
+        return new Gson().toJson(object);
     }
 }

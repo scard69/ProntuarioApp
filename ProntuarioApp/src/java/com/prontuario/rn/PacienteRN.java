@@ -7,50 +7,61 @@ package com.prontuario.rn;
 
 import com.prontuario.BD.PacienteBD;
 import com.prontuario.bean.Paciente;
-import com.prontuario.crud.CrudGenerico;
+import com.prontuario.crud.CrudGenericoRN;
+import com.prontuario.crud.RNException;
 import java.util.List;
-import javax.jws.WebParam;
-import javax.jws.WebService;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
  * @author scard
  */
-public class PacienteRN implements CrudGenerico<Paciente>{
+public class PacienteRN extends CrudGenericoRN<Paciente>{
     
-    private PacienteBD pacientebd;
+    private final PacienteBD pacienteBD;
 
     public PacienteRN() {
-        pacientebd = new PacienteBD();
-    }       
-    
+        pacienteBD = new PacienteBD();
+    }
+       
     @Override
-    public void salvar(@WebParam(name = "paciente")Paciente paciente) {
-        if(paciente.getEmail()==null || "".equals(paciente.getEmail())) {
-            throw new RuntimeException("Campo Email obrigatório");
+    public Paciente consultar(Paciente bean) {
+        avaliarConsultar(pacienteBD, bean);
+        return pacienteBD.consultar(bean);
+    }
+
+    @Override
+    public boolean excluir(Paciente bean) {
+        avaliarExcluir(pacienteBD, bean);
+        return pacienteBD.excluir(bean);
+    }
+
+    @Override
+    public Paciente salvar(Paciente bean) {
+        avaliarSalvar(pacienteBD, bean);
+        if(StringUtils.isBlank(bean.getNome())) {
+            throw new RNException(RNException.Tipo.CAMPOS_OBRIGATORIOS_VIOLADOS);
+        }        
+        return pacienteBD.salvar(bean);   
+    }
+
+    @Override
+    public Paciente alterar(Paciente bean) {
+        avaliarAlterar(pacienteBD, bean);
+        if(StringUtils.isBlank(bean.getNome())) {
+            throw new RNException(RNException.Tipo.CAMPOS_OBRIGATORIOS_VIOLADOS);
         }
-        if(paciente.getNome()==null || "".equals(paciente.getNome())) {
-            throw new RuntimeException("Campo Nome obrigatório");
-        }
-        if(paciente.getContato()==null || "".equals(paciente.getContato())) {
-            throw new RuntimeException("Campo Contato obrigatório");
-        } 
-        pacientebd.salvar(paciente);
+        return pacienteBD.alterar(bean);        
     }
 
     @Override
-    public void excluir(@WebParam(name = "paciente")Paciente paciente) {
-        pacientebd.excluir(paciente);
+    public List<Paciente> pesquisar(Paciente bean) {
+        return pacienteBD.pesquisar(bean);
     }
 
     @Override
-    public List<Paciente> listar(@WebParam(name = "paciente")Paciente paciente) {
-        return pacientebd.listar(paciente);
+    public List<Paciente> pesquisar(String valor) {
+        valor = avaliarPesquisar(valor);
+        return pacienteBD.pesquisar(valor);
     }
-
-    @Override
-    public Paciente consultar(Paciente paciente) {
-        return pacientebd.consultar(paciente);
-    }
-    
 }

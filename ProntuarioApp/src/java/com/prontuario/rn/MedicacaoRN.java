@@ -7,45 +7,54 @@ package com.prontuario.rn;
 
 import com.prontuario.BD.MedicacaoBD;
 import com.prontuario.bean.Medicacao;
-import com.prontuario.crud.CrudGenerico;
+import com.prontuario.crud.CrudGenericoRN;
 import java.util.List;
-import javax.jws.WebParam;
-import javax.jws.WebService;
+
 
 /**
  *
  * @author scard
  */
-public class MedicacaoRN implements CrudGenerico<Medicacao>{
-
-    private MedicacaoBD medicacaobd;
+public class MedicacaoRN extends CrudGenericoRN<Medicacao>{
+    
+    private final MedicacaoBD medicacaoBD;
 
     public MedicacaoRN() {
-        medicacaobd = new MedicacaoBD();
-    }
-    
-    
+        medicacaoBD = new MedicacaoBD();
+    }        
+
     @Override
-    public void salvar(@WebParam(name = "medicacao") Medicacao medicacao) {
-        if(medicacao.getCodigoPaciente() == null || "".equals(medicacao.getCodigoPaciente())){
-            throw new RuntimeException("Campo codigoPaciente obrigatório");
-        }
-        medicacaobd.salvar(medicacao);
+    public Medicacao consultar(Medicacao bean) {
+        avaliarConsultar(medicacaoBD, bean);
+        return medicacaoBD.consultar(bean);
     }
 
     @Override
-    public void excluir(@WebParam(name = "medicacao")Medicacao medicacao) {
-        medicacaobd.excluir(medicacao);
+    public boolean excluir(Medicacao bean) {
+        avaliarExcluir(medicacaoBD, bean);
+        return medicacaoBD.excluir(bean);
     }
 
     @Override
-    public List<Medicacao> listar(@WebParam(name = "medicacao")Medicacao medicacao) {
-        return medicacaobd.listar(medicacao);
+    public Medicacao salvar(Medicacao bean) {
+        avaliarSalvar(medicacaoBD, bean);        
+        return medicacaoBD.salvar(bean);        
     }
 
     @Override
-    public Medicacao consultar(Medicacao medicacao) {
-        return medicacaobd.consultar(medicacao);
+    public Medicacao alterar(Medicacao bean) {
+        avaliarAlterar(medicacaoBD, bean);
+        return medicacaoBD.alterar(bean);
     }
-    
+
+    @Override
+    public List<Medicacao> pesquisar(Medicacao bean) {
+        return medicacaoBD.pesquisar(bean);
+    }
+
+    @Override
+    public List<Medicacao> pesquisar(String valor) {
+        valor = avaliarPesquisar(valor);
+        return medicacaoBD.pesquisar(valor);
+    }  
 }
