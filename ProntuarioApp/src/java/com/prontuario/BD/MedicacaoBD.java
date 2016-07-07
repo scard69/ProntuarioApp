@@ -29,7 +29,7 @@ public class MedicacaoBD extends CrudGenericoBD<Medicacao>{
     public List<Medicacao> pesquisar(String valor) {
         EntityManager em = createEntityManager();        
         try {
-            Query query = em.createNamedQuery("medicacao.findByMedicacao");
+            Query query = em.createNamedQuery("Medicacao.findByMedicacao");
             query.setParameter("medicacao", "%" + valor + "%");
             return query.getResultList();
         } finally {

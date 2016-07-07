@@ -24,9 +24,9 @@ public class PacienteBD extends CrudGenericoBD<Paciente>{
 
     @Override
     public List<Paciente> pesquisar(String valor) {
-        EntityManager em = createEntityManager();        
+        EntityManager em = createEntityManager();       
         try {
-            Query query = em.createNamedQuery("paciente.findByPaciente");
+            Query query = em.createNamedQuery("Paciente.findByPaciente");
             query.setParameter("paciente", "%" + valor + "%");
             return query.getResultList();
         } finally {

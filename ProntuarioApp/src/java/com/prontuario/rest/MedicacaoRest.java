@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.prontuario.rest;
 
 import com.google.gson.Gson;
 import com.prontuario.bean.Medicacao;
-import com.prontuario.bean.Paciente;
 import com.prontuario.crud.CrudGenericoRest;
 import com.prontuario.crud.ErroRest;
 import com.prontuario.crud.RNException;
@@ -15,13 +9,8 @@ import com.prontuario.rn.MedicacaoRN;
 import java.net.URI;
 import java.util.List;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 
-/**
- *
- * @author scard
- */
 @Path("/medicacoes")
 public class MedicacaoRest extends CrudGenericoRest<Medicacao>{
 

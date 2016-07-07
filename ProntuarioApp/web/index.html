@@ -1,37 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="AppModule">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/login.css">
-        <script src="js/evento.js" type="text/javascript"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Teste ProntuarioApp</title>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+        <script src="bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+        <script src="js/paciente-controller.js" type="text/javascript"></script>
+        <script src="js/medicacoes-controller.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
-    <body>
-        <div class="wrapper">
-            <div class="container">
-                <h1>Welcome</h1>
-
-                <form class="form" id="form">
-                    <input type="text" id="name" placeholder="Username">
-                    <input type="password" placeholder="Password">
-                    <button type="submit" id="login-button">Login</button>
-                </form>
+    <body ng-controller="AppController">
+        <div class="container">	
+            <!-- CABEÇALHO DO SISTEMA -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cabecalho">
+                    <div class="page-header">
+                        <div class="form-group">
+                            <div class="col-md-2"><p/></div>
+                            <div class="col-md-8">
+                                <h1>
+                                    Sistema de Cadastro de Prontuários
+                                    <img src="img/logo.png" alt="logo" id="fotoLogo">
+                                </h1>
+                            </div>
+                            <div class="col-md-1"><p/></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <ul class="bg-bubbles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            <div class="row">
+                <!-- MENU DE NAVEGAÇÃO -->
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+                    <div class="cabecalhoLateral text-center">
+                        <img src="img/perfil.jpg" alt="usuario" class="img-circle">
+                        <div class="usuario-logado">
+                            Jessica da Silva<p/>
+                            Enfermeira
+                            <p/>
+                            <a href="index.html">Logout</a>
+                        </div>					
+                    </div>
+                    <ul class="nav nav-pills nav-stacked" id="lado">
+                        <li>
+                            <a href="#/"><span class="glyphicon glyphicon-home"></span> Home</a>
+                        </li>
+                        <li>
+                            <a href="#/paciente-lista"><span class="glyphicon glyphicon-user"></span> Paciente</a>
+                        </li>
+                        <li>
+                            <a href="#/historico-medicacoes"><span class="glyphicon glyphicon-folder-open"></span>  Historico de Medicações</a>
+                        </li>
+                        <li>
+                            <a href="#/revisao-saude"><span class="glyphicon glyphicon-folder-open"></span> Revisao da Saúde</a>
+                        </li>
+                        <li>
+                            <a href="#/"><span class="glyphicon glyphicon-picture"></span> ITEM3</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- CONTEÚDO INTERNO DO SISTEMA -->
+                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+                    <!-- ONDE SÃO INSERIDAS AS PÁGINAS; PARTIALS -->
+                    <div ng-view />
+                </div>
+            </div>
         </div>
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
-<!-- FONTE: http://codepen.io/Lewitje/pen/BNNJjo -->
 </html>
