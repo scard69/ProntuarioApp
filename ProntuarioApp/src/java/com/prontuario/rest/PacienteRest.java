@@ -6,6 +6,7 @@
 package com.prontuario.rest;
 
 import com.google.gson.Gson;
+import com.prontuario.bean.Medicacao;
 import com.prontuario.bean.Paciente;
 import com.prontuario.crud.CrudGenericoRest;
 import com.prontuario.crud.ErroRest;
@@ -43,6 +44,14 @@ public class PacienteRest extends CrudGenericoRest<Paciente>{
     public Response pesquisar(String q) {
         try {
             List<Paciente> ret = pacienteRN.pesquisar(q);
+            
+            for (Paciente p : ret) {
+                for (Medicacao m : p.getMedicacaoList()) {
+                    m.setCodigoPaciente(null);
+                }
+            }
+            
+            
             return gerarResponseParaCollection(ret);
         } catch (RNException e) {
             return exceptionParaResponse(e);

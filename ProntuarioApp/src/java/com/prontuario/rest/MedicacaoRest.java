@@ -2,6 +2,7 @@ package com.prontuario.rest;
 
 import com.google.gson.Gson;
 import com.prontuario.bean.Medicacao;
+import com.prontuario.bean.Paciente;
 import com.prontuario.crud.CrudGenericoRest;
 import com.prontuario.crud.ErroRest;
 import com.prontuario.crud.RNException;
@@ -29,6 +30,12 @@ public class MedicacaoRest extends CrudGenericoRest<Medicacao>{
     public Response pesquisar(String q) {
         try {
             List<Medicacao> ret = medicacaoRN.pesquisar(q);
+            
+            for (Medicacao m : ret) {
+                for (Paciente p : m.getCodigoPaciente()) {
+                    p.setMedicacaoList(null);
+                }
+            }
             return gerarResponseParaCollection(ret);
         } catch (RNException e) {
             return exceptionParaResponse(e);
